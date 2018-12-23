@@ -1,0 +1,1 @@
+The source material in the repository is licensed under the AFL or BSD license.
