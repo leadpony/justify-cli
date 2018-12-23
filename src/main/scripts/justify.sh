@@ -1,3 +1,9 @@
 #!/bin/bash
 
-java -jar lib/justify-cli-${project.version}.jar $*
+if [ -n "$JAVA_HOME" ]; then
+  JAVA="$JAVA_HOME/bin/java"
+else
+  JAVA=java
+fi
+
+"$JAVA" -jar lib/justify-cli-${project.version}.jar $*

@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.leadpony.justify.cli;
 
 import java.io.BufferedReader;
@@ -52,12 +51,21 @@ public class Validator {
     private final ResourceBundle bundle;
     private int errors;
     
+    /**
+     * Constructs this object.
+     */
     public Validator() {
         handler = service.createProblemPrinter(this::printProblem);
         bundle = ResourceBundle.getBundle(BUNDLE_NAME);
     }
 
-    public boolean validate(String[] args) {
+    /**
+     * Validates a JSON schema and a JSON instance.
+     * @param args the command line arguments.
+     * @return {@code true} if all of them are valid.
+     *         {@code false} if one of them is invalid.
+     */
+    public boolean validate(String... args) {
         switch (args.length) {
         case 1:
             return validateSchema(Paths.get(args[0]));
@@ -69,6 +77,10 @@ public class Validator {
         }
     }
     
+    /**
+     * Return the number of lines in the standard error.
+     * @return the number of lines in the standard error.
+     */
     public int getNumberOfErrors() {
         return errors;
     }

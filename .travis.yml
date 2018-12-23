@@ -1,0 +1,10 @@
+language: java
+jdk:
+    - oraclejdk8
+    - openjdk9
+    - openjdk10
+    - openjdk11
+script:
+    - mvn package
+    - cd target && tar xzf justify-cli-*.tar.gz
+    - cd justify-cli && ./justify.sh person.schema.json person.json

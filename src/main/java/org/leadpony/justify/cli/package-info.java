@@ -15,7 +15,8 @@
  */
 
 /**
+ * Provides command line utilities.
+ * 
  * @author leadpony
- *
  */
 package org.leadpony.justify.cli;
