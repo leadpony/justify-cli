@@ -19,14 +19,14 @@ For validating a JSON instance against a JSON schema:
 $ justify.sh <path/to/JSON/schema> <path/to/JSON/instance>
 ```
 
-For validating only JSON schema:
+For validating a JSON schema only:
 
 ```bash
 $ justify.sh <path/to/JSON/schema>
 ```
 
 ## Copyright Notice
-Copyright &copy; 2018 the Justify authors. This software is licensed under [Apache License, Versions 2.0][Apache 2.0 License].
+Copyright &copy; 2018-2019 the Justify authors. This software is licensed under [Apache License, Versions 2.0][Apache 2.0 License].
 
 [Apache 2.0 License]: https://www.apache.org/licenses/LICENSE-2.0
 [Justify]: https://github.com/leadpony/justify

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the Justify authors.
+ * Copyright 2018-2019 the Justify authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,18 +39,18 @@ import com.ibm.icu.text.MessageFormat;
 
 /**
  * Validator of JSON instances and schemas.
- * 
+ *
  * @author leadpony
  */
 public class Validator {
-    
+
     private static final String BUNDLE_NAME = Validator.class.getPackage().getName() + ".messages";
-    
+
     private final JsonValidationService service = JsonValidationService.newInstance();
     private final ProblemHandler handler;
     private final ResourceBundle bundle;
     private int errors;
-    
+
     /**
      * Constructs this object.
      */
@@ -76,7 +76,7 @@ public class Validator {
             return true;
         }
     }
-    
+
     /**
      * Return the number of lines in the standard error.
      * @return the number of lines in the standard error.
@@ -84,7 +84,7 @@ public class Validator {
     public int getNumberOfErrors() {
         return errors;
     }
-    
+
     private boolean validateSchema(Path path) {
         try {
             readSchema(path);
@@ -94,7 +94,7 @@ public class Validator {
             return false;
         }
     }
-    
+
     private JsonSchema readSchema(Path path) throws IOException {
         try (InputStream in = Files.newInputStream(path);
              JsonSchemaReader reader = service.createSchemaReader(in)){
@@ -123,7 +123,7 @@ public class Validator {
             return false;
         }
     }
-    
+
     private boolean validateInstanceAgainstSchema(Path path, JsonSchema schema) {
         try (InputStream in = Files.newInputStream(path);
              JsonReader reader = service.createReader(in, schema, handler)) {
@@ -135,16 +135,16 @@ public class Validator {
         }
         return (errors == 0);
     }
-    
+
     private void printMessage(String key, Object... arguments) {
         System.out.println(formatMessage(key, arguments));
     }
-    
+
     private void printErrorMessage(String key, Object... arguments) {
         System.err.println(formatMessage(key, arguments));
         ++errors;
     }
-    
+
     private void printError(Exception e) {
         System.err.println(e.getLocalizedMessage());
         ++errors;
@@ -154,12 +154,12 @@ public class Validator {
         System.err.println(line);
         ++errors;
     }
-    
+
     private String formatMessage(String key, Object... arguments) {
         String pattern = bundle.getString(key);
         return MessageFormat.format(pattern, arguments);
     }
-    
+
     private void printUsage() {
         InputStream in = findUsageResourceAsStream();
         if (in != null) {
@@ -169,7 +169,7 @@ public class Validator {
             }
         }
     }
-    
+
     private InputStream findUsageResourceAsStream() {
         Locale locale = Locale.getDefault();
         String name = "usage_" + locale.getLanguage() + ".txt";
@@ -179,7 +179,7 @@ public class Validator {
         }
         return getClass().getResourceAsStream("usage.txt");
     }
-    
+
     /**
      * The entry point of this program.
      * @param args the arguments given to this program.

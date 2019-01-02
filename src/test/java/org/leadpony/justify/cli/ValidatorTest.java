@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the Justify authors.
+ * Copyright 2018-2019 the Justify authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Test class of {@link Validator}.
- * 
+ *
  * @author leadpony
  */
 public class ValidatorTest {
-    
+
     /**
      * Returns JSON schemas to test.
      * @return JSON schemas to test.
@@ -70,7 +70,7 @@ public class ValidatorTest {
                 Arguments.of("nonexistent.schema.json", "person.json", 1)
                 );
     }
-    
+
     @ParameterizedTest(name="[{index}] {1}")
     @MethodSource("instances")
     public void testInstanceValidation(String schemaPath, String instancePath, int expected) {
@@ -78,14 +78,14 @@ public class ValidatorTest {
         validator.validate(path(schemaPath), path(instancePath));
         assertThat(validator.getNumberOfErrors()).isEqualTo(expected);
     }
-    
+
     @Test
     public void testNoArguments() {
         Validator validator = new Validator();
         validator.validate();
         assertThat(validator.getNumberOfErrors()).isEqualTo(0);
     }
-    
+
     private String path(String name) {
         return Paths.get("target", "test-classes", name).toString();
     }
