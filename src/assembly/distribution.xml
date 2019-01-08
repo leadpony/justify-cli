@@ -30,9 +30,7 @@
         <fileSet>
             <includes>
                 <include>LICENSE</include>
-                <include>LICENSE-*</include>
-                <include>NOTICE.md</include>
-                <include>README.md</include>
+                <include>THIRD-PARTY.md</include>
             </includes>
             <outputDirectory></outputDirectory>
         </fileSet>
