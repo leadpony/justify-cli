@@ -3,6 +3,8 @@
 [![Latest release](https://img.shields.io/github/release/leadpony/justify-cli.svg)](https://github.com/leadpony/justify-cli/releases/latest)
 [![Build Status](https://travis-ci.org/leadpony/justify-cli.svg?branch=master)](https://travis-ci.org/leadpony/justify-cli)
 
+**WARNING: This repository has been archived as all activities are now happening in the repository of [Justify](https://github.com/leadpony/justify).**
+
 Justify CLI is a command-line utility for validating JSON documents based on the JSON Schema specification.
 
 ## Downloads
